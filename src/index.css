@@ -1,13 +1,172 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+*{
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #161616;
+  color: #fff;
+  margin: 0;
+}
+
+.root {
+   display: flex;
+   flex-direction: column;
+}
+
+header {
+  background-color: #353333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.movie {
+  background-color: #353333; 
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 1rem;
+  width: 250px;
+}
+
+.movie img {
+  max-width: 100%;
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 13px;
+  font-weight: 900;
+   
+}
+
+.movie-info h3 {
+  margin: 0;
+}
+
+.movie-over {
+  background-color: #FFC107;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+  color: #161616;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  transform: translateY(102%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover .movie-over {
+  transform: translateY(0%);
+
+}
+
+.movie-over h2 {
+  font-weight: bold;
+}
+
+.movie-over p {
+  font-size: 13px;
+}
+
+.topnav {
+  padding: 0.5rem 1.5rem;
+}
+
+.topnav a{
+  color: #fff;
+  margin: 0.5rem;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.search {
+  background-color: transparent;
+  border: 2px solid #f2f2f2;
+  border-radius: 50px;
+  color:  #f2f2f2;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.tag {
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.tag.green {
+  color: green;
+}
+
+.tag.orange {
+  color: orange;
+}
+
+.tag.red {
+  color: red;
+}
+
+.active {
+  color: #161616 !important;
+  background-color: white;
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 2em;
+  padding: 10px 34px;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 25px;
+  background-color: #161616;
+  border: 2px solid #f2f2f2;
+  color: #f2f2f2;
+  
+}
+
+button:hover {
+  background-color: #f2f2f2;
+  color: #161616;
+}
+
+.prev-button {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.next-button {
+  font-size: 20px;
+  font-weight: 900;
 }
