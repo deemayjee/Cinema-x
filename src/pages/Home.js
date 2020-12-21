@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Movie from '../components/Movie';
 import Pagination from '../components/Pagination';
 
-const Home = ({ movies }) => {
+const Home = ({ movies }) => {  
+
 
     return (
         <div>

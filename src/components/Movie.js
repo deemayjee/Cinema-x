@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+// import styles from './Movie.module.css';
+
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 
@@ -13,21 +16,24 @@ const setVoteClass = (vote) => {
 };
 
 
-const Movie = ({ title, poster_path, overview, vote_average }) => (
-    <div className="movie">
-        <img src={poster_path ? IMG_API + poster_path : 'https://images.unsplash.com/photo-1520878682198-bdde6f442adc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'} alt={title} />
-        <div className="movie-info">
-            <h3>{title}</h3>
-            <span className={`tag ${setVoteClass(vote_average)}`}>
-                {vote_average}
-            </span>
-        </div>
+ 
+const Movie = ({ title, poster_path, overview, vote_average, id }) => (
+    <Link to={ `/movie/${id}` } style={{ color: '#fff' , textDecoration: 'none'}}>
+        <div className="movie">
+            <img src={poster_path ? IMG_API + poster_path : 'https://images.unsplash.com/photo-1520878682198-bdde6f442adc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'} alt={title} />
+            <div className="movie-info">
+                <h3>{title}</h3>
+                <span className={`tag ${setVoteClass(vote_average)}`}>
+                    {vote_average}
+                </span>
+            </div>
 
-        <div className="movie-over">
-            <h2>Overview</h2>
-            <p>{overview}</p>
+            <div className="movie-over">
+                <h2>Overview</h2>
+                <p>{overview}</p>
+            </div>
         </div>
-    </div>
+    </Link>
 );
 
 export default Movie;

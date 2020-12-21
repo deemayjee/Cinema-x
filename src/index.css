@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
+#root, html, body{
+   height: 100vh;
+ }
 *{
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  margin: 0; 
 }
 
+
 body {
-  background-color: #161616;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   margin: 0;
 }
 
@@ -18,7 +22,7 @@ body {
 }
 
 header {
-  background-color: #353333;
+  background-color: #012541;
   padding: 1rem;
   display: flex;
   justify-content: space-between; 
@@ -32,7 +36,7 @@ header {
 }
 
 .movie {
-  background-color: #353333; 
+  background-color: #009688; 
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -60,7 +64,7 @@ header {
 }
 
 .movie-over {
-  background-color: #FFC107;
+  background-color: #009688;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
@@ -150,16 +154,17 @@ button {
   cursor: pointer;
   border: 0;
   border-radius: 25px;
-  background-color: #161616;
-  border: 2px solid #f2f2f2;
+  background-color: #012541;
+  border: 2px solid #012541;
   color: #f2f2f2;
   
 }
 
 button:hover {
-  background-color: #f2f2f2;
+  background-color: #009688;
   color: #161616;
-}
+  border: #009688;
+} 
 
 .prev-button {
   font-size: 20px;
@@ -169,4 +174,91 @@ button:hover {
 .next-button {
   font-size: 20px;
   font-weight: 900;
+}
+
+.movie-page-container {
+  display: flex !important;
+  justify-content: center !important;
+  padding-top: 60px !important;
+  height: 100vh;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+}
+
+ .movie-info-container {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.image-container {
+  margin-top: 20px;
+}
+
+.info-container {
+  background-color: #000;
+  padding: 20px;
+  height: 575px;
+  margin-top: 20px;
+  opacity: 0.9;
+}
+.info-container h2 {
+  font-size: 40px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #01d277;
+  margin: 1em 0em;
+}
+
+.info-container h3 {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: bolder;
+  color: #01d277;
+  margin: 0.5em 0em;
+}
+
+.info-container h4 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 900;
+  color: #01d277;
+}
+
+.info-container p {
+  font-size: 16px;
+  line-height: 25px;
+  color: #fff;
+}
+
+.overview-text {
+  font-size: 16px;
+  line-height: 25px;
+  color: #fff;
+  margin-bottom: 2em
+}
+
+.page-number {
+  font-size: 50px;
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie-properties {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  margin: 2em 0em;
+}
+
+.movie-properties-two {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  margin: 3em 0em;
+}
+
+.movie-genre p{
+  line-height: 5px;
 }
