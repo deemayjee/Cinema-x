@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { NavLink } from "react-router-dom";
 
-const NavBar = ({ searchTerm, handleSubmit, handleOnChange}) => {
+const NavBar = ({ searchTerm, handleSubmit, handleOnChange, darkMode, setDarkMode }) => {
+
     return (
         <div>
             <header>
@@ -10,6 +11,20 @@ const NavBar = ({ searchTerm, handleSubmit, handleOnChange}) => {
                     <NavLink to="/now_playing">NOW PLAYING</NavLink>
                     <NavLink to="/top_rated">TOP RATED</NavLink>
                     <NavLink to="/upcoming">UPCOMING</NavLink>
+                </div>
+                <div className="toggle-container">
+                    <span style={{ color: darkMode ? "grey" : "yellow", marginTop: "15px"}}>☀︎</span>
+                    <span className="toggle">
+                        <input
+                        checked={darkMode}
+                        onChange={() => setDarkMode(prevMode => !prevMode)}
+                        id="checkbox"
+                        className="checkbox"
+                        type="checkbox"
+                        />
+                        <label htmlFor="checkbox" />
+                    </span>
+                    <span style={{ color: darkMode ? "slateblue" : "grey", marginTop: "15px"}}>☾</span>
                 </div>
                 <form onSubmit={handleSubmit}>
                 <input 
@@ -20,9 +35,10 @@ const NavBar = ({ searchTerm, handleSubmit, handleOnChange}) => {
                     onChange={handleOnChange}
                 />
                 </form>
+
             </header>
         </div>
     )
 }
 
-export default NavBar
+export default NavBar;

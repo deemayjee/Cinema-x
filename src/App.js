@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import axios from 'axios';
-import { css } from '@emotion/react'
 import { HashLoader } from "react-spinners";
 
 import { Home, LatestMovies, TopRated, Upcoming } from './pages';
@@ -16,7 +15,8 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
+  const [darkMode, setDarkMode] = useState(getInitialMode());
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
   const { pathname: category } = useLocation();
@@ -36,8 +36,14 @@ const App = () => {
     setPage(1);
   }, [category]);
 
-  
+  useEffect(() => {
+      localStorage.setItem("dark", JSON.stringify(darkMode));
+  }, [darkMode]);
 
+  function getInitialMode(){
+    const savedMode = JSON.parse(localStorage.getItem('dark'));
+    return savedMode || false;
+  }
 
   const getMovies = async (API) => {
     setLoading(true);
@@ -84,26 +90,26 @@ const App = () => {
 
   return (
     <>
-      <NavBar searchTerm={searchTerm} handleSubmit={handleSubmit} handleOnChange={handleOnChange}/>
+      <NavBar searchTerm={searchTerm} handleSubmit={handleSubmit} handleOnChange={handleOnChange} darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Switch>
         <Redirect exact from="/" to="/popular" />
         <Route path="/popular">
-          <Home movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm} />
+          <Home movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm} darkMode={darkMode}/>
         </Route>
         <Route path="/now_playing">
-          <LatestMovies movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm}/>
+          <LatestMovies movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm} darkMode={darkMode}/>
         </Route>
         <Route path="/top_rated">
-          <TopRated movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm}/>
+          <TopRated movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm} darkMode={darkMode}/>
         </Route>
         <Route path="/upcoming">
-          <Upcoming movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm}/>
+          <Upcoming movies={movies} handleSubmit={handleSubmit} searchTerm={searchTerm} darkMode={darkMode}/>
         </Route>
         <Route path="/movie/:id">
           <MovieInfo/>
         </Route>
       </Switch>
-      {!category.startsWith('/movie') && <Pagination getNext={nextPage} getBack={prevPage} page={page}/> }
+      {!category.startsWith('/movie') && <Pagination getNext={nextPage} getBack={prevPage} page={page} darkMode={darkMode}/> }
     </>
   );
 }

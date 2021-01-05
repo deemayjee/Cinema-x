@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Pagination = ({getNext, getBack, page}) => {
+const Pagination = ({getNext, getBack, page, darkMode}) => {
 
 
     return (
-        <div>
+        <div className={darkMode ? 'dark-mode' : 'light-mode'}>
             <div className="button-container">
                 {page !== 1 ? <button type="button" className="prev-button" onClick={getBack}>PREV</button> : null}
                 <div className="page-number">{page}</div>
